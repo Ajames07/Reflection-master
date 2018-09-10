@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 const feedbackObject = {
-    person: {
+    newPersonObject: {
         feeling: 0,
         understanding: 0,
         support: 0,
@@ -20,7 +20,9 @@ const feedbackObject = {
 const feedbackData = (state = feedbackObject, action) => {
     if(action.type === 'FEEDBACK_DATA'){
        const newData = action.payload;
-        return {...state,feedback: newData.feedback}
+        return {...state,feedbackObject: newData.feedbackObject}
+    }else if(action.type === 'NEW_FEEDBACK'){
+        return feedbackObject;
     }
     return state;
 }//end feedbackData
